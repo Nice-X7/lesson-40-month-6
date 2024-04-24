@@ -1,16 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Todo } from "./Todo";
-import { setChoseTodo } from "../redux/action";
+import { Album } from "./Album";
+import { setChoseAlbume } from "../redux/action";
 
-export const Todos = () => {
-  const todos = useSelector((state) => state.todos);
+export const Albums = () => {
+  const albums = useSelector((state) => state.albumes);
   const selectUserId = useSelector((state) => state.selectedUserId);
   const filter = useSelector((state) => state.filter);
 
-  const filterTodos = todos
-    .filter((todo) => todo.userId === selectUserId)
-    .filter((todo) => todo.title.indexOf(filter) > -1);
+  const filterAlbums = albums
+    .filter((item) => item.userId === selectUserId)
+    .filter((item) => item.title.indexOf(filter) > -1);
   const dispatch = useDispatch();
 
   if (selectUserId === null) {
@@ -21,8 +21,8 @@ export const Todos = () => {
     );
   }
 
-  const handleChoseTodo = (x) => {
-    dispatch(setChoseTodo(x.target.value));
+  const handleChoseAlbum = (x) => {
+    dispatch(setChoseAlbume(x.target.value));
   };
 
   return (
@@ -32,11 +32,11 @@ export const Todos = () => {
         placeholder="Enter text to search for a case"
         className="search_line"
         value={filter}
-        onChange={handleChoseTodo}
+        onChange={handleChoseAlbum}
       />
       <ul>
-        {filterTodos.map((todo) => {
-          return <Todo todo={todo} key={todo.id} />;
+        {filterAlbums.map((item) => {
+          return <Album album={item} key={item.id} />;
         })}
       </ul>
     </div>

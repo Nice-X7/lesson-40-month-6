@@ -13,14 +13,14 @@ export const loadUsers = () => {
 }
 
 // For load todos 
-export const loadTodos = () => {
+export const loadAlbums = () => {
     return dispatch => {
-        dispatch({type: "load/todos/start"})
+        dispatch({type: "load/albums/start"})
 
-        fetch("https://jsonplaceholder.typicode.com/todos")
+        fetch("https://jsonplaceholder.typicode.com/albums")
         .then(response => response.json())
         .then(json => dispatch({
-            type: "load/todos/fulfilled",
+            type: "load/albums/fulfilled",
             payload: json
         }))
     }
@@ -33,9 +33,9 @@ export const selectUser = (userId) => {
   }
 }
 
-export const setChoseTodo = (text) => {
+export const setChoseAlbume = (text) => {
   return {
-    type: "search/filter/todos",
+    type: "search/filter/albums",
     payload: text
   }
 }

@@ -1,8 +1,8 @@
 const initialState = {
     users: [],
     loadUsers: false,
-    todos: [],
-    loadTodos: false,
+    albumes: [],
+    loadAlbums: false,
     selectedUserId: null,
     filter: ""
 }
@@ -22,17 +22,17 @@ export const reducer = (state = initialState, action) => {
                 users: action.payload
             }
 
-        case "load/todos/start":
+        case "load/albums/start":
             return {
                 ...state,
-                loadTodos: true
+                loadAlbumes: true
             }
             
-        case "load/todos/fulfilled":
+        case "load/albums/fulfilled":
             return {
                 ...state,
-                loadTodos: false,
-                todos: action.payload
+                loadAlbumes: false,
+                albumes: action.payload
             }
         
         case "select/user":
@@ -41,7 +41,7 @@ export const reducer = (state = initialState, action) => {
                 selectedUserId: action.payload
             }
 
-        case "search/filter/todos":
+        case "search/filter/albums":
             return {
                 ...state,
                 filter: action.payload

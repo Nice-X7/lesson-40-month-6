@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Todos } from "./Todos";
+import { Albums } from "./Albums";
 import { Users } from "./Users";
 import { useEffect } from "react";
-import { loadTodos, loadUsers } from "../redux/action";
+import { loadAlbums, loadUsers } from "../redux/action";
 import ReactLoading from 'react-loading';
 
 export const App = () => {
@@ -10,13 +10,13 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(loadUsers())
-    dispatch(loadTodos())
+    dispatch(loadAlbums())
   }, [])
 
   const loadingUsers = useSelector((state) => state.loadUsers)
-  const loadingTodos = useSelector(state => state.loadTodos)
+  const loadingAlbums = useSelector(state => state.loadAlbums)
 
-  if (loadingTodos || loadingUsers) {
+  if (loadingAlbums || loadingUsers) {
     return (
       <div className="loading">
         <ReactLoading type="bubbles" color="#000" width={200} height={200}/>
@@ -27,7 +27,7 @@ export const App = () => {
   return (
     <div className="App">
       <Users />
-      <Todos />
+      <Albums />
     </div>
   );
 }
