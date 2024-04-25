@@ -9,12 +9,10 @@ export const User = ({ user }) => {
   };
 
   return (
-    <div className="user">
-      <li onClick={selectUserId}>
-        <span className="userName">{user.name}</span>
-        <br />
-        <span>{user.email}</span>
-      </li>
-    </div>
+    <button className="user" onClick={selectUserId}>
+      <span className="userName">{user.name}</span>
+      <br />
+      <span>{user.email}</span>
+    </button>
   );
 };

@@ -13,8 +13,8 @@ export const App = () => {
     dispatch(loadAlbums())
   }, [])
 
-  const loadingUsers = useSelector((state) => state.loadUsers)
-  const loadingAlbums = useSelector(state => state.loadAlbums)
+  const loadingUsers = useSelector((state) => state.users.loadUsers)
+  const loadingAlbums = useSelector(state => state.albums.loadAlbums)
 
   if (loadingAlbums || loadingUsers) {
     return (

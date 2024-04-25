@@ -1,14 +1,17 @@
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import { thunk }  from "redux-thunk";
-import { reducer } from "./reducer";
+import { albums } from "./albums/albums"
+import { users } from "./users/users"
 
 const logger = createLogger({
     diff: true,
     collapsed: true
 })
 
-export const store = createStore(
-    reducer, 
-    applyMiddleware(thunk, logger)
-)
+const rootState = combineReducers({
+    users: users,
+    albums: albums, 
+})
+
+export const store = createStore(rootState, applyMiddleware(thunk, logger))

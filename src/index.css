@@ -8,32 +8,43 @@ body {
   display: flex;
 }
 
-.user > li {
-  list-style-type: none;
+.user {
   border: 1px solid #000;
+  background-color: #fff;
   width: 300px;
-  height: 50px;
-  padding: 8px;
+  height: 60px;
   margin-bottom: 20px;
   border-radius: 8px;
   cursor: pointer;
+  text-align: left;
 }
-
-.user > li:hover {
+.user:hover {
   color: #fff;
   background-color: #000;
   transition: 0.3s;
 }
+
+.user:focus {
+  background-color: #000;
+  color: #fff;
+}
+
+.menu_user {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 0 20px;
+}
+
 .userName {
   font-size: 20px;
   font-weight: 600;
 }
 
-.todos {
-  margin: 15px 0 0 400px;
+.albums {
+  margin: 20px 0 0 300px;
   width: 700px;
 }
-.todos > ul > .todo > li {
+.albums > ul > .album > li {
   list-style-type: none;
   text-align: center;
   border: 1px solid;
@@ -43,13 +54,13 @@ body {
   cursor: pointer;
 }
 
-.todos > ul > .todo > li:hover {
+.albums > ul > .album > li:hover {
   background-color: #e4e8ed;
   transition: 0.15s;
 }
 
 .choseUser {
-  margin: auto;
+  margin: 300px 0 0 560px;
   font-size: 34px;
   font-weight: 700;
 }

@@ -4,9 +4,9 @@ import { Album } from "./Album";
 import { setChoseAlbume } from "../redux/action";
 
 export const Albums = () => {
-  const albums = useSelector((state) => state.albumes);
-  const selectUserId = useSelector((state) => state.selectedUserId);
-  const filter = useSelector((state) => state.filter);
+  const albums = useSelector((state) => state.albums.albumes);
+  const selectUserId = useSelector((state) => state.users.selectedUserId);
+  const filter = useSelector((state) => state.albums.filter);
 
   const filterAlbums = albums
     .filter((item) => item.userId === selectUserId)
@@ -21,12 +21,12 @@ export const Albums = () => {
     );
   }
 
-  const handleChoseAlbum = (x) => {
-    dispatch(setChoseAlbume(x.target.value));
+  const handleChoseAlbum = (event) => {
+    dispatch(setChoseAlbume(event.target.value));
   };
 
   return (
-    <div className="todos">
+    <div className="albums">
       <input
         type="text"
         placeholder="Enter text to search for a case"
