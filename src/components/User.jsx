@@ -1,18 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { selectUser } from "../redux/action";
+import { Link } from "react-router-dom";
 
 export const User = ({ user }) => {
-  const dispatch = useDispatch();
-  const selectUserId = () => {
-    dispatch(selectUser(user.id));
-  };
-
   return (
-    <button className="user" onClick={selectUserId}>
-      <span className="userName">{user.name}</span>
-      <br />
-      <span>{user.email}</span>
-    </button>
+    <Link to={`/${user.id}`}>
+      <button className="user">
+        <span className="userName">{user.name}</span>
+        <br />
+        <span>{user.email}</span>
+      </button>
+    </Link>
   );
 };

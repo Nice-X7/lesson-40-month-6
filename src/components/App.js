@@ -4,6 +4,7 @@ import { Users } from "./Users";
 import { useEffect } from "react";
 import { loadAlbums, loadUsers } from "../redux/action";
 import ReactLoading from 'react-loading';
+import { Routes, Route } from "react-router-dom";
 
 export const App = () => {
   const dispatch = useDispatch()
@@ -14,7 +15,7 @@ export const App = () => {
   }, [])
 
   const loadingUsers = useSelector((state) => state.users.loadUsers)
-  const loadingAlbums = useSelector(state => state.albums.loadAlbums)
+  const loadingAlbums = useSelector((state) => state.albums.loadAlbums)
 
   if (loadingAlbums || loadingUsers) {
     return (
@@ -27,7 +28,12 @@ export const App = () => {
   return (
     <div className="App">
       <Users />
-      <Albums />
+      <Routes>
+        <Route 
+        path="/:id?"
+        element={<Albums />}
+        />
+      </Routes>
     </div>
   );
 }

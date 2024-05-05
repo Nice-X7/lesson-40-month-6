@@ -2,18 +2,20 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Album } from "./Album";
 import { setChoseAlbume } from "../redux/action";
+import { useParams } from "react-router-dom";
 
 export const Albums = () => {
   const albums = useSelector((state) => state.albums.albumes);
-  const selectUserId = useSelector((state) => state.users.selectedUserId);
   const filter = useSelector((state) => state.albums.filter);
-
+  const id = parseInt(useParams().id);
   const filterAlbums = albums
-    .filter((item) => item.userId === selectUserId)
+    .filter((item) => item.userId === id)
     .filter((item) => item.title.indexOf(filter) > -1);
   const dispatch = useDispatch();
 
-  if (selectUserId === null) {
+  console.log(isNaN(id));
+
+  if (isNaN(id)) {
     return (
       <div className="choseUser">
         <span>← Select user</span>
